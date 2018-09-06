@@ -1,0 +1,14 @@
+_minted-*/
+auth.tex
+*.pdf
+*.aux
+*.out
+*.dvi
+*.toc
+*.lot
+*.lof
+*.bbl
+*.blg
+*.gz
+*.log
+
