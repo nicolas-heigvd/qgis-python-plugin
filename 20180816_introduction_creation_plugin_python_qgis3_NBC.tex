@@ -158,9 +158,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \textbf{Avertissement préalable}\\\vspace*{-0.4em}
 
-Dans sa version 2.x QGIS permet l'utilisation du langage de programmation Python 2.7. Dans sa version 3.x QGIS utilise dorénavant Python 3.5. Les deux versions majeures de Python ne sont pas entièrement compatibles, c'est pourquoi, un plugin écrit en Python 2.7 pour QGIS 2.18 par exemple, devra sans doute être traduit en Python 3.5 pour être porté sur la version 3.x de QGIS.\\
+Dans sa version 2.x QGIS permet l'utilisation du langage de programmation Python 2.7. Dans sa version 3.x QGIS utilise dorénavant Python 3.5, 3.6 ou 3.7 (sous Windows, QGIS 3.2 utilise Python 3.6 par exemple). Les deux versions \textbf{majeures} (2 vs 3) de Python ne sont pas entièrement compatibles, c'est pourquoi, un plugin écrit en Python 2.7 pour QGIS 2.18 par exemple, devra sans doute être traduit en Python 3.x pour être porté sur la version 3.x de QGIS.\\
 
-Le présent document survole brièvement l'utilisation de Python (3.5) et le développement de plugins pour la version 3 de QGIS. \\
+Le présent document survole brièvement l'utilisation de Python (3.5, 3.6, 3.7) et le développement de plugins pour la version 3 de QGIS. \\
 
 
 \textbf{L'API Python de QGIS}\\\vspace*{-0.4em}
@@ -593,7 +593,7 @@ Ne pas oublier de \textbf{régulièrement enregistrer} le script Python !\\
 Vérifier ensuite le résultat qui s'affiche dans la \textbf{console} Python.
 
 
-\underline{\smash{Remarque}}: il est possible qu'il y ait des problèmes d'\textbf{encodage} notamment dans le nom des points d'intérêt. Il s'agit d'un problème lors de l'import de la couche dans QGIS et pour y remédier, il faut se rendre dans les propriétés de la couche (rappel : clic droit sur la couche dans la fenêtre \og{}\texttt{Couches}\fg{}) puis, ouvrir l'onglet \texttt{Général}. Sous la section \og{}\texttt{Source}\fg{} > sous \og{}\texttt{Spécifier l'encodage}\fg{} on prendra soin de choisir \og{}\texttt{UTF-8}\fg{} :
+\underline{\smash{Remarque}}: il est possible qu'il y ait des problèmes d'\textbf{encodage} notamment dans le nom des points d'intérêt. Il s'agit d'un problème lors de l'import de la couche dans QGIS et pour y remédier, il faut se rendre dans les propriétés de la couche (rappel : clic droit sur la couche dans la fenêtre \og{}\texttt{Couches}\fg{}) puis, ouvrir l'onglet \texttt{Général}. Sous la section \og{}\texttt{Source}\fg{} > sous \og{}\texttt{Encodage des données sources}\fg{} on prendra soin de choisir \og{}\texttt{UTF-8}\fg{} :
 \vspace*{-0.4em}
 \begin{figure}[H]
 \centering
@@ -630,7 +630,7 @@ Shop Express with coord X = 6.641174 and coord Y = 46.7814
 
 \item Écrire le nom et les coordonnées de chaque élément dans un fichier \texttt{TXT}.\\
 
-Pour ce faire, il est nécessaire dans un premier temps d'écrire un nouveau fichier en indiquant le chemin et le nom du fichier, ainsi que l'option \og{}\texttt{w}\fg{} pour spécifier que le fichier est ouvert en écriture (\texttt{w} pour \underline{\smash{w}}rite) : 
+Pour ce faire, il est nécessaire dans un premier temps d'écrire un nouveau fichier en indiquant le chemin et le nom du fichier, ainsi que l'option \og{}\texttt{wb}\fg{} pour spécifier que le fichier est ouvert en écriture (\texttt{w} pour \underline{\smash{w}}rite et \texttt{b} pour spécifier qu'on y écrit des données \underline{\smash{b}}inaires) : 
 \vspace*{-1em}
 \begin{center}
 \begin{minipage}[t]{0.88\textwidth}
@@ -642,7 +642,7 @@ Pour ce faire, il est nécessaire dans un premier temps d'écrire un nouveau fic
   numbersep=5pt,
   fontsize=\small,
   framesep=1mm]{python3}
-output = open('D:/temp_votreNom/mon_projet_python_qgis3/codes/poi.txt','w')
+output = open('D:/temp_votreNom/mon_projet_python_qgis3/codes/poi.txt','wb')
 \end{minted}
 \end{minipage}
 \end{center}
@@ -716,6 +716,8 @@ line = '%s\n' % (data)
 \vspace*{1em}
 
 \og{}\textbackslash{}n\fg{} permet d'ajouter un retour à la ligne ; ainsi, chaque élément est écrit sur une nouvelle ligne dans le fichier texte. \\
+
+S'aider de ces quelques exemples pour \textbf{définir} soi-même la variable \og{}data\fg{} !\\
 
 
 Ensuite, il faut indiquer les éléments à écrire dans le fichier à l'aide de la commande suivante : 
@@ -936,7 +938,7 @@ Une fois téléchargés, les plugins externes se trouvent dans le dossier :
 \texttt{C:\textbackslash{}Users\textbackslash{}\textcolor{mygreen}{UserName}\textbackslash{}AppData\textbackslash{}Roaming\textbackslash{}QGIS\textbackslash{}QGIS3\textbackslash{}profiles\textbackslash{}default\textbackslash{}python\textbackslash{}plugins} 
 \end{center}
 
-où \textcolor{mygreen}{UserName} est son nom d'utilisateur. Il est possible d'installer, de désinstaller ou de mettre à jour des plugins depuis le menu \og{}Extensions\fg{} de QGIS >{} \og{}Installer / Gérer les extensions\fg{}. 
+où \textcolor{mygreen}{UserName} est son nom d'utilisateur. Le dossier \og{}plugins\fg{} n'existe pas tant qu'auncun plugin n'a été installé. Il est possible d'installer, de désinstaller ou de mettre à jour des plugins depuis le menu \og{}Extension\fg{} de QGIS >{} \og{}Installer / Gérer les extensions\fg{}. 
 \end{enumerate} 
 
 
@@ -1013,7 +1015,7 @@ où \textcolor{mygreen}{UserName} est son nom d'utilisateur.
 
 Afin de créer de nouveaux plugins QGIS, il est naturellement nécessaire de posséder QGIS (\url{https://qgis.org/en/site/forusers/download.html}) qui comprend notamment QT Designer, permettant ainsi la création simplifiée d'interfaces graphiques pour les plugins. \vspace*{0.2em}
 
-Mais il faut aussi installer \textbf{deux extensions} (plugins) \textbf{supplémentaires} depuis le menu \og{}Extensions\fg{} >{} \og{}Installer / Gérer les extensions\fg{} (fig.\,\ref{extensions}) : \vspace*{0.2em}
+Mais il faut aussi installer \textbf{deux extensions} (plugins) \textbf{supplémentaires} depuis le menu \og{}Extension\fg{} >{} \og{}Installer / Gérer les extensions\fg{} (fig.\,\ref{extensions}) : \vspace*{0.2em}
 
 \begin{itemize}\itemsep0.2em
 \renewcommand\labelitemi{\---}
@@ -1043,7 +1045,7 @@ Mais il faut aussi installer \textbf{deux extensions} (plugins) \textbf{supplém
 \end{figure}
 
 
-\underline{\smash{Résultat}}: après ces opérations, deux nouvelles entrées ont fait leur apparition dans le menu \og{}Extensions\fg{} de QGIS ainsi que deux nouveaux boutons dans la barre d'outils principale (fig.\,\ref{fig3}).
+\underline{\smash{Résultat}}: après ces opérations, deux nouvelles entrées ont fait leur apparition dans le menu \og{}Extension\fg{} de QGIS ainsi que deux nouveaux boutons dans la barre d'outils principale (fig.\,\ref{fig3}).
 
 
 \begin{figure}[H]
@@ -1195,6 +1197,24 @@ pyrcc5 -o resources.py resources.qrc
 \end{center}
 \vspace*{1em}
 
+Si un message d'erreur indiquant qu'aucun fichier \og{}pyrcc5\fg{} n'a été trouvé, on la remplacera par :
+\vspace*{-1em}
+\begin{center}
+\begin{minipage}[t]{0.92\textwidth}
+\begin{minted}[frame=single,
+  escapeinside=||,
+  mathescape,
+  linenos,
+  numbersep=5pt,
+  fontsize=\footnotesize,
+  framesep=1mm]{doscon}
+C:\Users\UserName\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\helloworld>
+python3.6 -m PyQt5.pyrcc_main -o resources.py resources.qrc
+\end{minted}
+\end{minipage}
+\end{center}
+\vspace*{1em}
+
 
 
 
@@ -1223,7 +1243,7 @@ pyrcc5 -o resources.py resources.qrc
 \fi
 
 
-
+\vspace*{1em}
 \item À ce stade il est nécessaire de \textbf{redémarrer} QGIS pour qu'il prenne en compte le nouveau plugin.
 
 \begin{figure}[H]
@@ -1236,7 +1256,7 @@ pyrcc5 -o resources.py resources.qrc
 
 
 \item \textbf{Ouvrir} le plugin. Il est maintenant directement exécutable depuis le menu :\\
-\og{}Extensions > HelloWorld > \includegraphics[width=0.76em]{hello2018_icon.png} HelloWorld\fg{} ou à l'aide du bouton correspndant ( \includegraphics[width=1em]{hello2018_icon.png} ) dans la barre d'outils.
+\og{}Extension > HelloWorld > \includegraphics[width=0.76em]{hello2018_icon.png} HelloWorld\fg{} ou à l'aide du bouton correspndant ( \includegraphics[width=1em]{hello2018_icon.png} ) dans la barre d'outils.
 
 
 $\Rightarrow$ \underline{\smash{Résultat}}: pour l'instant, l'interface graphique du plugin n'est composée que de 2 boutons (fig.\,\ref{plugin_buttons}):
@@ -1256,8 +1276,42 @@ Pour ajouter de nouveaux éléments à cette fenêtre, il faut travailler sur l'
 \end{enumerate}
 
 
+\section*{Notes}
+\hrulefill
+\vspace*{1.6em}
 
+\hrulefill
+\vspace*{1.6em}
 
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
 
 
 
@@ -1290,7 +1344,7 @@ Il s'agit à présent de modifier l'interface graphique grâce au logiciel \og{}
 où \textcolor{mygreen}{UserName} est son nom d'utilisateur.
 
 
-\item \textbf{Ouvrir} le fichier ayant l'extension \og{}\texttt{.ui}\fg{} avec le logiciel \og{}Qt Designer\fg{}: pour cela réaliser un clic droit sur le fichier et choisir \og{}Ouvrir avec...\fg{} puis sélectionner \og{}Qt Designer\fg{} dans la liste des programmes. S'il ne s'y trouve pas, choisir alors \og{}Autre\fg{} et naviguer jusqu'au fichier exécutable du programme sous \texttt{C:\textbackslash{}Program Files\textbackslash{}QGIS\_\textcolor{green}{<VERSIONSTR>}\textbackslash{}bin\textbackslash{}qgis-designer.bat} (il serait aussi possible de démarrer une version indépendante du logiciel si elle était installée). Remplacer \textcolor{green}{<VERSIONSTR>} par le nom de code de QGIS, par exemple \og{}Bonn\fg{} pour la version 3.2.
+\item \textbf{Ouvrir} le fichier ayant l'extension \og{}\texttt{.ui}\fg{} avec le logiciel \og{}Qt Designer\fg{}: pour cela réaliser un clic droit sur le fichier et choisir \og{}Ouvrir avec...\fg{} puis sélectionner \og{}Qt Designer\fg{} dans la liste des programmes. S'il ne s'y trouve pas, choisir alors \og{}Autre\fg{} et naviguer jusqu'au fichier exécutable du programme sous \texttt{C:\textbackslash{}Programmes\textbackslash{}QGIS\_\textcolor{green}{<VERSION>}\textbackslash{}bin\textbackslash{}qgis-designer.bat} (il serait aussi possible de démarrer une version indépendante du logiciel si elle était installée). Remplacer \textcolor{green}{<VERSION>} par le numéro de version de QGIS, par exemple 3.2.
 
 \underline{\smash{Remarque}}: \vspace*{0.4em}
 \begin{itemize}\itemsep0.4em
@@ -2146,7 +2200,7 @@ experimental=True
 
 
 
-
+\iffalse
 \newpage{}
 \section*{Notes}
 \hrulefill
@@ -2208,6 +2262,7 @@ experimental=True
 
 \hrulefill
 \vspace*{1.6em}
+\fi
 
 \newpage{}
 \section{Ressources}
