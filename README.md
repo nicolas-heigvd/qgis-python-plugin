@@ -1,4 +1,6 @@
 # qgis-python-plugin
+0. Prerequisites: a full LaTeX distribution, with bibtex and pdflatex. Evince is used as the default PDF viewer.
+
 1. To clone this repo, create anywhere on a linux OS a `command.sh` file with this content and execute it:    
 
 `#!/bin/bash`  
