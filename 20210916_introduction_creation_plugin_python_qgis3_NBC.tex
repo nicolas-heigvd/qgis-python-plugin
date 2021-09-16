@@ -68,10 +68,10 @@
 \usepackage{lastpage}
  \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\slshape\nouppercase{\leftmark}}
+\fancyhead[LE,RO]{\slshape\nouppercase{\rightmark}}
 \fancyfoot[LE,RO]{Plugin QGIS 3}
 \fancyfoot[CO]{\thepage/\pageref{LastPage}}
-\fancyfoot[RE,LO]{HES d'été 2018}
+\fancyfoot[RE,LO]{HES d'été 2021}
 
  
  
@@ -1177,7 +1177,26 @@ helloworld/
 
 \newpage{}
 
-\item Par l'intermédiaire d'une invite de commandes Windows (\texttt{cmd}) : se rendre dans le dossier du plugin et y \textbf{générer} le fichier Python \texttt{resources.py} à partir du fichier \texttt{resources.qrc} grâce à la commande suivante : 
+\item Par l'intermédiaire d'une invite de commandes "OSGeo4W Shell" ("menu démarrer > OSGeo4W Shell", il ne faut pas utiliser l'invite de commande de base de Windows) : exécuter au préalable ces deux commandes :
+\vspace*{-1em}
+\begin{center}
+\begin{minipage}[t]{0.92\textwidth}
+\begin{minted}[frame=single,
+  escapeinside=||,
+  mathescape,
+  linenos,
+  numbersep=5pt,
+  fontsize=\footnotesize,
+  framesep=1mm]{doscon}
+C:\>
+py3_env
+qt5_env
+\end{minted}
+\end{minipage}
+\end{center}
+\vspace*{1em}
+
+Toujours depuis le shell OSGeo4W, se rendre ensuite dans le dossier du plugin et y \textbf{générer} le fichier Python \texttt{resources.py} à partir du fichier \texttt{resources.qrc} grâce à la commande suivante : 
 \vspace*{-1em}
 \begin{center}
 \begin{minipage}[t]{0.92\textwidth}
@@ -1200,7 +1219,7 @@ pyrcc5 -o resources.py resources.qrc
 
 
 
-$\Rightarrow$ \underline{\smash{Résultat}}:  un nouveau fichier (\og{}\texttt{resources.py}\fg{}) a été créé dans le dossier du plugin. Celui-ci contient la traduction en Python du fichier \og{}\texttt{resources.qrc}\fg{}; un document \texttt{xml} qui contient les liens vers les ressources extérieures (comme par exemple l'icône du plugin). 
+$\Rightarrow$ \underline{\smash{Résultat}}: un nouveau fichier (\og{}\texttt{resources.py}\fg{}) a été créé dans le dossier du plugin. Celui-ci contient la traduction en Python du fichier \og{}\texttt{resources.qrc}\fg{}; un document \texttt{xml} qui contient les liens vers les ressources extérieures (comme par exemple l'icône du plugin). 
 
 \iffalse
 \underline{\smash{Remarque}}: Il est également possible de compiler le fichier \og{}resources.qrc\fg{} à l'aide d'OSGeo4W Shell, un fichier \texttt{BAT} du logiciel QGIS. Pour cela: \textbf{lancer} OSGeo4W Shell, se rendre dans le dossier du plugin à l'aide de la commande \og{}\texttt{cd}\fg{} et y exécuter la commande suivante:
@@ -1257,6 +1276,46 @@ Pour ajouter de nouveaux éléments à cette fenêtre, il faut travailler sur l'
 
 
 
+
+\section*{Notes}
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
+
+\hrulefill
+\vspace*{1.6em}
 
 
 
@@ -2114,7 +2173,7 @@ $\Rightarrow$ \underline{\smash{Exemple du résultat attendu}}:
 \vspace*{0.4em}
 \item \textbf{Enregistrer} ses modifications.
 
-\item Depuis une invite de commandes Windows : \textbf{générer} le fichier Python avec les ressources grâce à la commande suivante : 
+\item Depuis une invite de commandes "OSGeo4W Shell" : \textbf{générer} le fichier Python avec les ressources grâce à la commande suivante : 
 \vspace*{-1em}
 \begin{center}
 \begin{minipage}[t]{0.92\textwidth}
