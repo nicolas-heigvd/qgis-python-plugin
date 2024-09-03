@@ -14,6 +14,7 @@ To clone this repo, create anywhere on a linux OS a `command.sh` file with this 
 `pdflatex 20240904_introduction_creation_plugin_python_qgis3_NBC.tex`  
 `evince 20240904_introduction_creation_plugin_python_qgis3_NBC.pdf`  
 
+## 2. Troubleshooting
 Depending on your LaTeX configuration, you might see an error message like:
 
 ```
