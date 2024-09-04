@@ -821,9 +821,11 @@ pour ensuite pouvoir enregistrer les données au format \texttt{SHP} en les proj
   numbersep=5pt,
   fontsize=\footnotesize,
   framesep=1mm]{python3}
-QgsVectorFileWriter.writeAsVectorFormat(layer, 
-                                        'D:/temp_votreNom/mon_projet_python_qgis3/codes/poi.shp', 
-                                        'utf-8', dest_crs, 'ESRI Shapefile')
+QgsVectorFileWriter.writeAsVectorFormat(
+    layer, 
+    'D:/temp_votreNom/mon_projet_python_qgis3/codes/poi.shp', 
+    'utf-8', dest_crs, 'ESRI Shapefile'
+)
 \end{minted}
 \end{minipage}
 \end{center}
@@ -1021,7 +1023,7 @@ Mais il faut aussi installer \textbf{deux extensions} (plugins) \textbf{supplém
 \begin{itemize}\itemsep0.2em
 \renewcommand\labelitemi{\---}
 \item \og{}\textbf{Plugin Builder 3}\fg{} (\url{https://plugins.qgis.org/plugins/pluginbuilder3}) qui permet la création du squelette de base pour un plugin (fichiers, structure des dossiers)
-\item \og{}\textbf{Plugin Reloader}\fg{} (\url{https://plugins.qgis.org/plugins/plugin_reloader} version min.=0.7.4) qui permet de recharger les modifications effectuées sur un plugin sans devoir redémarrer QGIS.
+\item \og{}\textbf{Plugin Reloader}\fg{} (\url{https://plugins.qgis.org/plugins/plugin_reloader} version min.=0.10) qui permet de recharger les modifications effectuées sur un plugin sans devoir redémarrer QGIS.
 
 
 \vspace*{-0.2em}
@@ -1034,17 +1036,20 @@ Mais il faut aussi installer \textbf{deux extensions} (plugins) \textbf{supplém
 \end{figure}
 
 
+\iffalse
 \includegraphics[scale=1]{warningt.png} \underline{\smash{Attention}}: pour installer \og{}Plugin Reloader\fg{}, il est nécessaire de cocher la case "\textbf{Afficher les extensions expérimentales}" dans l'onglet "Paramètres" de la fenêtre de gestion des extensions (fig.\,\ref{experimental}).
+\fi
 \end{itemize} 
 \vspace{1em}
 
+\iffalse
 \begin{figure}[H]
 	\centering
     \includegraphics[width=0.8\textwidth]{experimental_flag.png}
 	\caption[Sélectionner \og{}Afficher les extensions expérimentales\fg{} pour trouver \og{}Plugin reloader\fg{}.]{Vérifier que la case \og{}Afficher les extensions expérimentales\fg{} soit bien cochée avant de rechercher \og{}Plugin Reloader\fg{}!}
     \label{experimental}
 \end{figure}
-
+\fi
 
 \underline{\smash{Résultat}}: après ces opérations, deux nouvelles entrées ont fait leur apparition dans le menu \og{}Extension\fg{} de QGIS ainsi que deux nouveaux boutons dans la barre d'outils principale (fig.\,\ref{fig3}).
 
