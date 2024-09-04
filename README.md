@@ -6,17 +6,22 @@ A full LaTeX distribution, with bibtex and pdflatex. Evince is used as the defau
 ## 1. Instructions
 To clone this repo, create anywhere on a linux OS a `command.sh` file with this content and execute it:    
 
-`#!/bin/bash`    
-`git clone https://github.com/nicolas-heigvd/qgis-python-plugin.git`  
+```
+git clone https://github.com/nicolas-heigvd/qgis-python-plugin.git
+```
 
-Then run thoses commands in the given order:
-`pdflatex 20240904_introduction_creation_plugin_python_qgis3_NBC.tex`  
-`bibtex 20240904_introduction_creation_plugin_python_qgis3_NBC.aux`  
-`pdflatex 20240904_introduction_creation_plugin_python_qgis3_NBC.tex`  
-`pdflatex 20240904_introduction_creation_plugin_python_qgis3_NBC.tex`  
+Then run thoses commands in the given order:    
+```
+pdflatex 20240904_introduction_creation_plugin_python_qgis3_NBC.tex
+bibtex 20240904_introduction_creation_plugin_python_qgis3_NBC.aux
+pdflatex 20240904_introduction_creation_plugin_python_qgis3_NBC.tex
+pdflatex 20240904_introduction_creation_plugin_python_qgis3_NBC.tex
+```
 
-To visualize the resulting *.pdf file:
-`evince 20240904_introduction_creation_plugin_python_qgis3_NBC.pdf`  
+To visualize the resulting *.pdf file:    
+```
+evince 20240904_introduction_creation_plugin_python_qgis3_NBC.pdf
+```
 
 Or simple execute `./compile.sh`.
 
