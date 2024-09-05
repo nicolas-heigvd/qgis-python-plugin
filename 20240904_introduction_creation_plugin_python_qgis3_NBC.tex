@@ -1016,7 +1016,7 @@ où \textcolor{mygreen}{UserName} est son nom d'utilisateur.
 \label{InstallationDesOutils}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Afin de créer de nouveaux plugins QGIS, il est naturellement nécessaire de posséder QGIS (\url{https://qgis.org/en/site/forusers/download.html}) qui comprend notamment QT Designer, permettant ainsi la création simplifiée d'interfaces graphiques pour les plugins. \vspace*{0.2em}
+Afin de créer de nouveaux plugins QGIS, il est naturellement nécessaire de posséder QGIS (\url{https://qgis.org/download/}) qui comprend notamment QT Designer, permettant ainsi la création simplifiée d'interfaces graphiques pour les plugins. \vspace*{0.2em}
 
 Mais il faut aussi installer \textbf{deux extensions} (plugins) \textbf{supplémentaires} depuis le menu \og{}Extension\fg{} >{} \og{}Installer / Gérer les extensions\fg{} (fig.\,\ref{extensions}) : \vspace*{0.2em}
 
@@ -1521,17 +1521,17 @@ A présent, l'interface graphique possède plusieurs éléments d'interaction, m
   fontsize=\small,
   framesep=1mm]{python3}
 def run(self):
-        """Run method that performs all the real work"""
-        # show the dialog
-        self.dlg.show()
-        # Run the dialog event loop
-        result = self.dlg.exec_()
-        # See if OK was pressed
-        if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            print("Button OK of the plugin is successfully pushed!")
-            pass
+    """Run method that performs all the real work"""
+    # show the dialog
+    self.dlg.show()
+    # Run the dialog event loop
+    result = self.dlg.exec_()
+    # See if OK was pressed
+    if result:
+        # Do something useful here - delete the line containing pass and
+        # substitute with your code.
+        print("Button OK of the plugin is successfully pushed!")
+        pass
 \end{minted}
 \end{minipage}
 \end{center}
@@ -1796,7 +1796,7 @@ self.dlg.pushButton.clicked.connect(self.makeSomeStatistics)
     \begin{subfigure}[t]{0.44\textwidth}
     \centering
     	\includegraphics[width=1\textwidth]{qtpushbutton.png}
-    	\caption{Dant Qt Designer.}
+    	\caption{Dans Qt Designer.}
     	\label{pushbutton:qt}
     \end{subfigure}
     ~
